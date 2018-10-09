@@ -16,7 +16,7 @@ public class OpeningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.opening);
-        icon=findViewById(R.id.icon);
+        icon=(ImageView) findViewById(R.id.icon);
         final TranslateAnimation bIcon = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f,
                 Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, -10f);
         bIcon.setDuration(3000);
