@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import com.example.stackfarm.myapplication.MainActivity;
 import com.example.stackfarm.myapplication.R;
+import com.example.stackfarm.myapplication.guiding.GuideActivity;
+import com.example.stackfarm.myapplication.logining.LoginActivity;
 
 public class OpeningActivity extends AppCompatActivity {
     private ImageView icon;
@@ -16,6 +18,7 @@ public class OpeningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.opening);
+        InactivityTimer inactivityTimer=new InactivityTimer(this);
         icon=(ImageView) findViewById(R.id.icon);
         final TranslateAnimation bIcon = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f,
                 Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, -10f);
@@ -40,13 +43,15 @@ public class OpeningActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 icon.layout(0,2000,0,2000);
                 icon.clearAnimation();
-                Intent intent=new Intent(OpeningActivity.this, MainActivity.class);
+                Intent intent=new Intent(OpeningActivity.this,GuideActivity.class);
                 startActivity(intent);
             }
         });
+    }
 
-
-
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        this.finish();
     }
 }
