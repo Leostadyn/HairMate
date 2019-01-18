@@ -20,9 +20,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_round"
         android:label="HairMate"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
@@ -45,6 +45,12 @@
         <activity android:name=".guiding.GuideActivity">
 
         </activity>
+        <activity android:name=".personalCenter.PersonalActivity">
+
+        </activity>
+        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".home.HomeActivity"></activity>
+
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
     </application>
 

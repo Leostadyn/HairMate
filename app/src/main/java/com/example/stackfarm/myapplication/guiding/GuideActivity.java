@@ -1,13 +1,14 @@
 package com.example.stackfarm.myapplication.guiding;
 
 import android.Manifest;
-import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -21,17 +22,39 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.example.stackfarm.myapplication.BaseActivity;
 import com.example.stackfarm.myapplication.R;
+import com.example.stackfarm.myapplication.collector.ActivityCollector;
+import com.example.stackfarm.myapplication.home.HomeActivity;
+import com.example.stackfarm.myapplication.personalCenter.PersonalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuideActivity extends AppCompatActivity {
+public class GuideActivity extends BaseActivity {
     private MapView mapView;
     private BaiduMap baiduMap;
     private boolean isFirstLocate=true;
     public LocationClient mLocationClient;
-
+    protected BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent intent1=new Intent(GuideActivity.this, HomeActivity.class);
+                    startActivity(intent1);
+                    return true;
+                case R.id.navigation_personal:
+                    Intent intent2=new Intent(GuideActivity.this, PersonalActivity.class);
+                    startActivity(intent2);
+                    return true;
+                case R.id.navigation_shops:
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -41,6 +64,10 @@ public class GuideActivity extends AppCompatActivity {
         SDKInitializer.initialize(getApplicationContext());
 
         setContentView(R.layout.guiding);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_shops);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
         mapView=(MapView)findViewById(R.id.bmapView);
         baiduMap=mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
@@ -135,13 +162,8 @@ public class GuideActivity extends AppCompatActivity {
         mLocationClient.stop();
         mapView.onDestroy();
         baiduMap.setMyLocationEnabled(false);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+        ActivityCollector.removeActivity(this);
 
     }
-
 
 }
