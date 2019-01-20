@@ -7,8 +7,8 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import com.example.stackfarm.myapplication.MainActivity;
 import com.example.stackfarm.myapplication.R;
-import com.example.stackfarm.myapplication.home.HomeActivity;
 
 public class OpeningActivity extends AppCompatActivity {
     private ImageView icon;
@@ -41,7 +41,7 @@ public class OpeningActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 icon.layout(0,2000,0,2000);
                 icon.clearAnimation();
-                Intent intent=new Intent(OpeningActivity.this, HomeActivity.class);
+                Intent intent=new Intent(OpeningActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

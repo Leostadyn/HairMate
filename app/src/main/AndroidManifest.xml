@@ -42,14 +42,10 @@
         <activity android:name=".logining.LoginActivity">
 
         </activity>
-        <activity android:name=".guiding.GuideActivity">
+        <activity
+            android:name=".guiding.GuideActivity">
 
         </activity>
-        <activity android:name=".personalCenter.PersonalActivity">
-
-        </activity>
-        <activity android:name=".BaseActivity"></activity>
-        <activity android:name=".home.HomeActivity"></activity>
 
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
     </application>

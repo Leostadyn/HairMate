@@ -1,11 +1,16 @@
 package com.example.stackfarm.myapplication.guiding;
 
 import android.Manifest;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
@@ -22,40 +27,23 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
-import com.example.stackfarm.myapplication.BaseActivity;
 import com.example.stackfarm.myapplication.R;
-import com.example.stackfarm.myapplication.collector.ActivityCollector;
-import com.example.stackfarm.myapplication.home.HomeActivity;
-import com.example.stackfarm.myapplication.personalCenter.PersonalActivity;
+import com.example.stackfarm.myapplication.home.HomeFragment;
+import com.example.stackfarm.myapplication.personalCenter.PersonalFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuideActivity extends BaseActivity {
+public class GuideActivity extends AppCompatActivity {
+    private PersonalFragment personalFragment;
+    private HomeFragment homeFragment;
+
     private MapView mapView;
     private BaiduMap baiduMap;
     private boolean isFirstLocate=true;
     public LocationClient mLocationClient;
-    protected BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    Intent intent1=new Intent(GuideActivity.this, HomeActivity.class);
-                    startActivity(intent1);
-                    return true;
-                case R.id.navigation_personal:
-                    Intent intent2=new Intent(GuideActivity.this, PersonalActivity.class);
-                    startActivity(intent2);
-                    return true;
-                case R.id.navigation_shops:
-                    return true;
-            }
-            return false;
-        }
-    };
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +51,14 @@ public class GuideActivity extends BaseActivity {
         mLocationClient.registerLocationListener(new MyLocationListener());
         SDKInitializer.initialize(getApplicationContext());
 
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Fade fade = new Fade();
+            fade.setDuration(1700L);
+            getWindow().setEnterTransition(fade);
+        }
+
         setContentView(R.layout.guiding);
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setSelectedItemId(R.id.navigation_shops);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mapView=(MapView)findViewById(R.id.bmapView);
         baiduMap=mapView.getMap();
@@ -89,6 +81,46 @@ public class GuideActivity extends BaseActivity {
         }else{
             requestLocation();
         }
+
+        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_shops);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setItemTextColor(null);
+        //bottomNavigationView Item 选择监听
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                hideAllFragment(transaction);
+                Intent intent=new Intent();
+
+                switch (item.getItemId()){
+
+                    case R.id.navigation_personal:
+                        intent.putExtra("data_return","个人中心");
+                        setResult(RESULT_OK,intent);
+                        finish();
+                        break;
+                    case R.id.navigation_home:
+                        intent.putExtra("data_return","首页");
+                        setResult(RESULT_OK,intent);
+                        finish();
+                        break;
+                    case R.id.navigation_shops:
+                        break;
+                }
+                transaction.commit();
+
+                return false;
+            }
+        });
+
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     public void requestLocation(){
@@ -156,13 +188,23 @@ public class GuideActivity extends BaseActivity {
         mapView.onResume();
     }
 
+    public void hideAllFragment(FragmentTransaction transaction){
+        if(personalFragment!=null){
+            transaction.hide(personalFragment);
+        }
+        if(homeFragment!=null){
+            transaction.hide(homeFragment);
+        }
+
+    }
+
+
     @Override
     protected void onPause() {
         super.onPause();
         mLocationClient.stop();
         mapView.onDestroy();
         baiduMap.setMyLocationEnabled(false);
-        ActivityCollector.removeActivity(this);
 
     }
 
