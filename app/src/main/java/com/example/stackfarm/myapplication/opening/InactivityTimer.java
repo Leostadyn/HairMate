@@ -16,7 +16,7 @@ public final class InactivityTimer {
     private static final int INACTIVITY_DELAY_SECONDS = 4; //5分钟后自动关闭目标activity
     /**
      * 创建只有一条线程的线程池，他可以在指定延迟后执行线程任务,其中一个构造方法可以传入ThreadFractory
-     * JDK 1.5之后有了ScheduledExecutorService，不建议你再使用java.util.Timer，
+     * JDK commity.5之后有了ScheduledExecutorService，不建议你再使用java.util.Timer，
      * 因为它无论功能性能都不如ScheduledExecutorService。
      */
     private final ScheduledExecutorService inactivityTimer = Executors.newSingleThreadScheduledExecutor(new DaemonThreadFactory());

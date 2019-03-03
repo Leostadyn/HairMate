@@ -18,6 +18,7 @@ android {
     }
     sourceSets{
         main{
+            assets.srcDirs=['src/assets','src.assets/']
             jniLibs.srcDir 'libs'
             //说明so的路径为该libs路径，关联所有地图SDK的so文件
         }
@@ -37,4 +38,5 @@ dependencies {
     implementation'de.hdodenhof:circleimageview:2.1.0'
     implementation files('libs/BaiduLBS_Android.jar')
     implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.yinglan.scrolllayout:scrolllayout:1.0.2'
 }

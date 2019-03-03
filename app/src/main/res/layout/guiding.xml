@@ -1,16 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    tools:context=".guiding.GuideActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:clickable="true"/>
 
-    <com.baidu.mapapi.map.MapView
-        android:id="@+id/bmapView"
-        android:layout_width="match_parent"
-        android:layout_height="727dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/navigation" />
+        <com.yinglan.scrolllayout.ScrollLayout
+            android:background="@color/transparent"
+            android:id="@+id/scroll_down_layout"
+            android:layout_width="match_parent"
+            app:exitOffset="0dp"
+            app:minOffset="0dp"
+            app:maxOffset="300dp"
+            app:mode="open"
+            android:layout_height="match_parent">
+
+
+                <com.yinglan.scrolllayout.content.ContentScrollView
+                    android:id="@+id/scroll_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@color/colorPrimary"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:text="按住滑动" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="193dp">
+
+                            <ImageView
+                                android:background="#000"
+                                android:id="@+id/shop_image"
+                                android:layout_width="173dp"
+                                android:layout_height="128dp" />
+
+                            <TextView
+                                android:id="@+id/yuyue"
+                                android:layout_width="240dp"
+                                android:layout_height="66dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentRight="true"
+                                android:gravity="center"
+                                android:text="预约电话：1234567890" />
+
+                            <TextView
+                                android:id="@+id/loc"
+                                android:layout_width="238dp"
+                                android:layout_height="63dp"
+                                android:layout_below="@id/yuyue"
+                                android:layout_alignParentRight="true"
+                                android:gravity="center"
+                                android:text="地址：南京市江宁区弘景大道99号文鼎广场3幢" />
+
+                            <TextView
+                                android:id="@+id/time"
+                                android:layout_width="176dp"
+                                android:layout_height="67dp"
+                                android:layout_below="@id/shop_image"
+                                android:layout_alignParentLeft="true"
+                                android:layout_marginLeft="0dp"
+                                android:layout_marginTop="-2dp"
+                                android:gravity="center"
+                                android:text="营业时间：8:00-18:00" />
+
+                            <ImageView
+                                android:background="#000"
+                                android:layout_width="59dp"
+                                android:layout_height="64dp"
+                                android:layout_below="@id/loc"
+                                android:layout_toRightOf="@id/time" />
+
+                            <TextView
+                                android:gravity="center_vertical"
+                                android:text="座位数：20"
+                                android:layout_width="178dp"
+                                android:layout_height="64dp"
+                                android:layout_below="@id/loc"
+                                android:layout_alignParentRight="true" />
+                        </RelativeLayout>
+                        <TextView
+                            android:gravity="center"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:text="推荐tony："/>
+                        <RelativeLayout
+                            android:id="@+id/page_container1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"
+                            android:clipChildren="false"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                            <!--RelativeLayout和自定义的ClipViewPager都各自添加了一个属性android:clipChildren=”false”，
+                            clipChildren的意思是是否限制子View在其范围内，这个默认是true，
+                            也就是默认是限制子view在其范围的-->
+
+                            <com.example.stackfarm.myapplication.utils.ClipViewPager
+                                android:id="@+id/viewpager1"
+                                android:layout_width="200dp"
+                                android:layout_height="200dp"
+                                android:layout_centerInParent="true"
+                                android:clipChildren="false"
+                                android:overScrollMode="never" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </com.yinglan.scrolllayout.content.ContentScrollView>
+
+                <TextView
+                    android:id="@+id/text_foot"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/colorPrimary"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="按住滑动" />
+        </com.yinglan.scrolllayout.ScrollLayout>
+
+
+    </RelativeLayout>
+
+
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -23,6 +161,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
         app:menu="@menu/navigation" />
 
 

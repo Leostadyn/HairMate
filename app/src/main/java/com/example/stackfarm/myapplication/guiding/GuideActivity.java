@@ -14,6 +14,8 @@ import android.transition.Fade;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -28,10 +30,15 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.example.stackfarm.myapplication.R;
+import com.example.stackfarm.myapplication.adapter.TubatuAdapter;
 import com.example.stackfarm.myapplication.home.HomeFragment;
+import com.example.stackfarm.myapplication.home.ScalePageTransformer;
 import com.example.stackfarm.myapplication.personalCenter.PersonalFragment;
+import com.example.stackfarm.myapplication.utils.ClipViewPager;
+import com.yinglan.scrolllayout.ScrollLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GuideActivity extends AppCompatActivity {
@@ -42,6 +49,8 @@ public class GuideActivity extends AppCompatActivity {
     private BaiduMap baiduMap;
     private boolean isFirstLocate=true;
     public LocationClient mLocationClient;
+    private TubatuAdapter mPagerAdapter;
+    private ClipViewPager mViewPager;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -82,6 +91,29 @@ public class GuideActivity extends AppCompatActivity {
             requestLocation();
         }
 
+        mViewPager = (ClipViewPager)findViewById(R.id.viewpager1);
+        /**调节ViewPager的滑动速度**/
+        mViewPager.setSpeedScroller(300);
+
+        /**给ViewPager设置缩放动画，这里通过PageTransformer来实现**/
+        mViewPager.setPageTransformer(true, new ScalePageTransformer());
+        List<String> strList = Arrays.asList("one", "two", "three", "four");
+
+        /**
+         * 需要将整个页面的事件分发给ViewPager，不然的话只有ViewPager中间的view能滑动，其他的都不能滑动，
+         * 这是肯定的，因为ViewPager总体布局就是中间那一块大小，其他的子布局都跑到ViewPager外面来了
+         */
+        findViewById(R.id.page_container1).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return mViewPager.dispatchTouchEvent(event);
+            }
+        });
+
+        mPagerAdapter = new TubatuAdapter(this,strList);
+        mViewPager.setAdapter(mPagerAdapter);
+        initData();
+
         final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setSelectedItemId(R.id.navigation_shops);
         bottomNavigationView.setItemIconTintList(null);
@@ -115,6 +147,47 @@ public class GuideActivity extends AppCompatActivity {
             }
         });
 
+        final ScrollLayout mScrollLayout=(ScrollLayout)findViewById(R.id.scroll_down_layout);
+
+        ScrollLayout.OnScrollChangedListener mOnScrollChangedListener=new ScrollLayout.OnScrollChangedListener() {
+            @Override
+            public void onScrollProgressChanged(float currentProgress) {
+                if (currentProgress >= 0) {
+                    float precent = 280 * currentProgress;
+                    if (precent > 280) {
+                        precent = 280;
+                    } else if (precent < 0) {
+                        precent = 0;
+                    }
+                    mScrollLayout.getBackground().setAlpha(255 - (int) precent);
+                }
+            }
+
+            @Override
+            public void onScrollFinished(ScrollLayout.Status currentStatus) {
+
+            }
+
+            @Override
+            public void onChildScroll(int top) {
+
+            }
+        };
+        mScrollLayout.setOnScrollChangedListener(mOnScrollChangedListener);
+        mScrollLayout.getBackground().setAlpha(0);
+        mScrollLayout.setExitOffset(280);
+
+    }
+
+    private void initData() {
+        List<Integer> list = new ArrayList<>();
+        list.add(R.mipmap.one);
+        list.add(R.mipmap.two);
+        list.add(R.mipmap.three);
+        list.add(R.mipmap.four);
+        /**这里需要将setOffscreenPageLimit的值设置成数据源的总个数，如果不加这句话，会导致左右切换异常；**/
+        mViewPager.setOffscreenPageLimit(list.size());
+        mPagerAdapter.addAll(list);
     }
 
     @Override

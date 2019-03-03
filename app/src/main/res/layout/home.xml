@@ -5,6 +5,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:scaleType="fitXY"
+            android:id="@+id/titleImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_130"
+            android:src="@mipmap/title_image" />
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_100">
+
+            <ImageButton
+                android:id="@+id/shops"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22"
+                android:layout_marginLeft="@dimen/dp_33"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@mipmap/dingwei" />
+            <ImageButton
+                android:layout_marginLeft="@dimen/dp_89"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@mipmap/shifaxing"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22" />
+            <ImageButton
+                android:layout_marginLeft="@dimen/dp_145"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@mipmap/sheji"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22" />
+
+            <ImageButton
+                android:layout_marginLeft="@dimen/dp_200"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@mipmap/lianxing" />
+            <TextView
+                android:id="@+id/mendiandingwei"
+                android:layout_marginTop="@dimen/dp_45"
+                android:textSize="15.4sp"
+                android:layout_marginLeft="@dimen/dp_26"
+                android:text="门店定位"
+                android:textColor="#4c4c4c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="推荐门店"
+            android:textColor="#000"
+            android:id="@+id/tuijianmendian"
+            android:textSize="17.6sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <RelativeLayout
+            android:id="@+id/page_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:clipChildren="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!--RelativeLayout和自定义的ClipViewPager都各自添加了一个属性android:clipChildren=”false”，
+            clipChildren的意思是是否限制子View在其范围内，这个默认是true，
+            也就是默认是限制子view在其范围的-->
+
+            <com.example.stackfarm.myapplication.utils.ClipViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true"
+                android:clipChildren="false"
+                android:overScrollMode="never" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="猜你喜欢"
+            android:id="@+id/cainixihuan"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textSize="17.6sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/like1"
+                android:layout_width="149dp"
+                android:layout_height="110dp"
+                android:layout_marginLeft="30dp"
+                android:background="#000" />
+
+            <ImageView
+                android:id="@+id/like2"
+                android:layout_width="149dp"
+                android:layout_height="110dp"
+                android:layout_marginLeft="56dp"
+                android:layout_toRightOf="@id/like1"
+                android:background="#000" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </ScrollView>

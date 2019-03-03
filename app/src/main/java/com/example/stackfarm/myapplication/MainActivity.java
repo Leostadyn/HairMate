@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.navigation_shops:
-                Intent mIntent=new Intent(MainActivity.this,GuideActivity.class);;
+                Intent mIntent=new Intent(MainActivity.this,GuideActivity.class);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     startActivityForResult(mIntent, 1,ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                 }
