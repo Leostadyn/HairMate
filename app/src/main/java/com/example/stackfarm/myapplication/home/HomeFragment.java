@@ -40,6 +40,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private TextView cainixihuan;
     private TextView tuijianmendian;
     private TextView mendiandingwei;
+    private TextView celianxing;
+    private TextView shifaxin;
+    private TextView faxingsheji;
 
     public  static HomeFragment newInstance(int iFragmentPage){
         HomeFragment myFragment = new HomeFragment();
@@ -84,9 +87,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         cainixihuan=(TextView)view.findViewById(R.id.cainixihuan);
         tuijianmendian=(TextView)view.findViewById(R.id.tuijianmendian);
         mendiandingwei=(TextView)view.findViewById(R.id.mendiandingwei);
+        celianxing=(TextView)view.findViewById(R.id.celianxing);
+        faxingsheji=(TextView)view.findViewById(R.id.faxingsheji);
+        shifaxin=(TextView)view.findViewById(R.id.shifaxin);
+        celianxing.setTypeface(mTypeface);
         cainixihuan.setTypeface(mTypeface);
         tuijianmendian.setTypeface(mTypeface);
         mendiandingwei.setTypeface(mTypeface);
+        shifaxin.setTypeface(mTypeface);
+        faxingsheji.setTypeface(mTypeface);
         TextPaint tp = tuijianmendian.getPaint();
         tp.setFakeBoldText(true);
         tp=cainixihuan.getPaint();

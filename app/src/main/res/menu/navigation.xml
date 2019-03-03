@@ -3,18 +3,18 @@
     <item
         android:id="@+id/navigation_shops"
         android:icon="@mipmap/community"
-        android:title=""/>
+        android:title="社区"/>
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@mipmap/homepage"
-        android:title=""/>
+        android:title="主页"/>
 
 
     <item
         
         android:id="@+id/navigation_personal"
         android:icon="@mipmap/personpage"
-        android:title=""/>
+        android:title="个人"/>
 
 </menu>

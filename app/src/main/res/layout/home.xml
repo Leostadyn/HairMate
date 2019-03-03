@@ -16,57 +16,132 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_130"
             android:src="@mipmap/title_image" />
+
         <RelativeLayout
-            android:orientation="horizontal"
+            android:id="@+id/btn_text"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_100">
+            android:layout_height="@dimen/dp_60"
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/shops"
                 android:layout_width="@dimen/dp_22"
                 android:layout_height="@dimen/dp_22"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="@dimen/dp_33"
                 android:layout_marginLeft="@dimen/dp_33"
                 android:layout_marginTop="@dimen/dp_12"
                 android:background="@mipmap/dingwei" />
-            <ImageButton
-                android:layout_marginLeft="@dimen/dp_89"
-                android:layout_marginTop="@dimen/dp_12"
-                android:background="@mipmap/shifaxing"
-                android:layout_width="@dimen/dp_22"
-                android:layout_height="@dimen/dp_22" />
-            <ImageButton
-                android:layout_marginLeft="@dimen/dp_145"
-                android:layout_marginTop="@dimen/dp_12"
-                android:background="@mipmap/sheji"
-                android:layout_width="@dimen/dp_22"
-                android:layout_height="@dimen/dp_22" />
 
             <ImageButton
-                android:layout_marginLeft="@dimen/dp_200"
+                android:id="@+id/shifaxing"
                 android:layout_width="@dimen/dp_22"
                 android:layout_height="@dimen/dp_22"
+                android:layout_marginStart="@dimen/dp_33"
+                android:layout_marginLeft="@dimen/dp_33"
                 android:layout_marginTop="@dimen/dp_12"
+                android:layout_toEndOf="@+id/shops"
+                android:layout_toRightOf="@+id/shops"
+                android:background="@mipmap/shifaxing" />
+
+            <ImageButton
+                android:id="@+id/sheji"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22"
+                android:layout_marginStart="@dimen/dp_33"
+                android:layout_marginLeft="@dimen/dp_33"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_toEndOf="@+id/shifaxing"
+                android:layout_toRightOf="@+id/shifaxing"
+                android:background="@mipmap/sheji" />
+
+            <ImageButton
+                android:id="@+id/lianxing"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22"
+                android:layout_marginStart="@dimen/dp_33"
+                android:layout_marginLeft="@dimen/dp_33"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_toEndOf="@+id/sheji"
+                android:layout_toRightOf="@+id/sheji"
                 android:background="@mipmap/lianxing" />
+
             <TextView
                 android:id="@+id/mendiandingwei"
-                android:layout_marginTop="@dimen/dp_45"
-                android:textSize="15.4sp"
-                android:layout_marginLeft="@dimen/dp_26"
-                android:text="门店定位"
-                android:textColor="#4c4c4c"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_45"
+                android:gravity="center"
+                android:text="门店定位"
+                android:textColor="#4c4c4c"
+                android:textSize="15.4sp" />
+
+            <TextView
+                android:id="@+id/shifaxin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_45"
+                android:layout_toEndOf="@+id/mendiandingwei"
+                android:layout_toRightOf="@+id/mendiandingwei"
+                android:gravity="center"
+                android:text="试发型"
+                android:textColor="#4c4c4c"
+                android:textSize="15.4sp" />
+
+            <TextView
+                android:id="@+id/faxingsheji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:layout_marginTop="@dimen/dp_45"
+                android:layout_toEndOf="@+id/shifaxin"
+                android:layout_toRightOf="@+id/shifaxin"
+                android:gravity="center"
+                android:text="发型设计"
+                android:textColor="#4c4c4c"
+                android:textSize="15.4sp" />
+
+            <TextView
+                android:id="@+id/celianxing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:layout_marginTop="@dimen/dp_45"
+                android:layout_marginEnd="@dimen/dp_27"
+                android:layout_marginRight="@dimen/dp_27"
+                android:layout_toEndOf="@+id/faxingsheji"
+                android:layout_toRightOf="@+id/faxingsheji"
+                android:gravity="center"
+                android:text="测脸型"
+                android:textColor="#4c4c4c"
+                android:textSize="15.4sp" />
+
+
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/dp_27" />
+        <TextView
+            android:id="@+id/tuijianmendian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
             android:text="推荐门店"
             android:textColor="#000"
-            android:id="@+id/tuijianmendian"
-            android:textSize="17.6sp"
-            android:gravity="center"
-            android:textStyle="bold"/>
+            android:textSize="17.6sp"/>
+
         <RelativeLayout
             android:id="@+id/page_container"
             android:layout_width="match_parent"
@@ -102,18 +177,23 @@
 
             <ImageView
                 android:id="@+id/like1"
-                android:layout_width="149dp"
-                android:layout_height="110dp"
-                android:layout_marginLeft="30dp"
-                android:background="#000" />
+                android:layout_width="@dimen/dp_86"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:src="@mipmap/like_left" />
 
             <ImageView
                 android:id="@+id/like2"
-                android:layout_width="149dp"
-                android:layout_height="110dp"
-                android:layout_marginLeft="56dp"
-                android:layout_toRightOf="@id/like1"
-                android:background="#000" />
+                android:layout_width="@dimen/dp_86"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_24"
+                android:src="@mipmap/like_right" />
         </RelativeLayout>
     </LinearLayout>
 

@@ -271,6 +271,10 @@ public class GuideActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 
     @Override
     protected void onPause() {
