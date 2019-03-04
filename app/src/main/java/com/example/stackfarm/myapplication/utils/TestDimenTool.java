@@ -19,11 +19,11 @@ public class TestDimenTool {
 //            此处name后的标签名可以自定义"margin_"随意更改
             String start = "    <dimen name=\"dp_" + change(i) + "\">";
             String end = "dp</dimen>";
-            sw400.append(start).append(change(i)).append(end).append("\n");
+            sw400.append(start).append(change(num*i)).append(end).append("\n");
         }
         //添加xml的尾标签
         sw400.append("</resources>");
-        String sw400file = "./app/src/main/res/values/dimens.xml";
+        String sw400file = "./app/src/main/res/values-sw360dp/dimens.xml";
         writeFile(sw400file, sw400.toString());
     }
  
@@ -40,7 +40,7 @@ public class TestDimenTool {
     }
  
     private static String change(double i) {
-        DecimalFormat df = new DecimalFormat("#.0");
+        DecimalFormat df = new DecimalFormat("#.0000000");
         String str=df.format(i);
             return str;
     }

@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         /**给ViewPager设置缩放动画，这里通过PageTransformer来实现**/
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
-        List<String> strList = Arrays.asList("one", "two", "three", "four");
+        List<String> strList = Arrays.asList("one", "two", "three");
 
         /**
          * 需要将整个页面的事件分发给ViewPager，不然的话只有ViewPager中间的view能滑动，其他的都不能滑动，
@@ -108,7 +108,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         list.add(R.mipmap.one);
         list.add(R.mipmap.two);
         list.add(R.mipmap.three);
-        list.add(R.mipmap.four);
         /**这里需要将setOffscreenPageLimit的值设置成数据源的总个数，如果不加这句话，会导致左右切换异常；**/
         mViewPager.setOffscreenPageLimit(list.size());
         mPagerAdapter.addAll(list);

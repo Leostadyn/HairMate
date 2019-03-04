@@ -184,7 +184,6 @@ public class GuideActivity extends AppCompatActivity {
         list.add(R.mipmap.one);
         list.add(R.mipmap.two);
         list.add(R.mipmap.three);
-        list.add(R.mipmap.four);
         /**这里需要将setOffscreenPageLimit的值设置成数据源的总个数，如果不加这句话，会导致左右切换异常；**/
         mViewPager.setOffscreenPageLimit(list.size());
         mPagerAdapter.addAll(list);
