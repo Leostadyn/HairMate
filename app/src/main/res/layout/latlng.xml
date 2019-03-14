@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/page_container1"
+    android:clipChildren="false"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/shop_image"
+        android:background="#ff000000"
+        android:layout_width="173.0dip"
+        android:layout_height="128.0dip"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_alignParentLeft="true"/>
+    <TextView
+        android:gravity="center"
+        android:id="@+id/yuyue"
+        android:layout_width="240.0dip"
+        android:layout_height="66.0dip"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="预约电话：1234567890"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:gravity="center"
+        android:id="@+id/loc"
+        android:layout_width="238.0dip"
+        android:layout_height="63.0dip"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="地址：南京市江宁区弘景大道99号文鼎广场3幢"
+        android:layout_below="@id/yuyue"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:gravity="center"
+        android:id="@+id/time"
+        android:layout_width="176.0dip"
+        android:layout_height="67.0dip"
+        android:layout_marginLeft="0.0dip"
+        android:layout_marginTop="-2.0dip"
+        android:text="营业时间：8:00-18:00"
+        android:layout_below="@id/shop_image"
+        android:layout_alignParentLeft="true"/>
+    <ImageView
+        android:background="#ff000000"
+        android:layout_width="@dimen/dp_10"
+        android:layout_height="@dimen/dp_10"
+        android:layout_toRightOf="@id/time"
+        android:layout_below="@id/loc"/>
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="178.0dip"
+        android:layout_height="64.0dip"
+        android:text="座位数：20"
+        android:layout_below="@id/loc"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:textSize="20.0sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/text2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="推荐tony："
+        android:layout_below="@id/loc"/>
+    <com.example.stackfarm.myapplication.utils.ClipViewPager
+        android:layout_below="@id/text2"
+        android:id="@+id/viewpager1"
+        android:layout_width="200.0dip"
+        android:layout_height="200.0dip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16.0dip"
+        android:clipChildren="false"
+        android:overScrollMode="never" />
+
+</RelativeLayout>
