@@ -33,7 +33,7 @@
             android:layout_marginStart="41dp"
             android:layout_marginLeft="41dp"
             android:layout_marginTop="13dp"
-            android:background="@mipmap/ic_launcher" />
+            android:background="@mipmap/a_m" />
 
         <TextView
             android:id="@+id/nickname_tag"
@@ -91,25 +91,25 @@
 
         <Button
             android:text="搜索"
-            android:background="#fff"
+            android:background="@mipmap/a_a"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="菜单"
-            android:background="#fff"
+            android:background="@mipmap/a_b"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="分类"
-            android:background="#fff"
+            android:background="@mipmap/a_c"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="积分"
-            android:background="#fff"
+            android:background="@mipmap/a_d"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
@@ -122,25 +122,25 @@
 
         <Button
             android:text="信息"
-            android:background="#fff"
+            android:background="@mipmap/a_e"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="折扣"
-            android:background="#fff"
+            android:background="@mipmap/a_f"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="地址"
-            android:background="#fff"
+            android:background="@mipmap/a_g"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="优惠"
-            android:background="#fff"
+            android:background="@mipmap/a_h"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
@@ -153,25 +153,25 @@
 
         <Button
             android:text="客服"
-            android:background="#fff"
+            android:background="@mipmap/a_i"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="问题"
-            android:background="#fff"
+            android:background="@mipmap/a_j"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="评价"
-            android:background="#fff"
+            android:background="@mipmap/a_k"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
         <Button
             android:text="设置"
-            android:background="#fff"
+            android:background="@mipmap/a_l"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>

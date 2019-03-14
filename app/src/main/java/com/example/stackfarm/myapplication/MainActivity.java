@@ -1,6 +1,5 @@
 package com.example.stackfarm.myapplication;
 
-import android.app.ActivityOptions;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Build;
@@ -10,10 +9,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
-import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.stackfarm.myapplication.guiding.GuideActivity;
+import com.example.stackfarm.myapplication.community.CommunityFragment;
 import com.example.stackfarm.myapplication.home.HomeFragment;
 import com.example.stackfarm.myapplication.personalCenter.PersonalFragment;
 
@@ -21,49 +19,51 @@ public class MainActivity extends AppCompatActivity {
 
      private HomeFragment homeFragment;
      private PersonalFragment personalFragment;
+     private CommunityFragment communityFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
 
         @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
 
-        switch (item.getItemId()){
-            case R.id.navigation_home:
-                hideAllFragment(transaction);
-                if(homeFragment==null){
-                    homeFragment =HomeFragment.newInstance(R.layout.home);//"第二个Fragment"
-                    transaction.add(R.id.FramePage,homeFragment);
-                }else{
-                    transaction.show(homeFragment);
-                }
-                break;
-            case R.id.navigation_personal:
-                hideAllFragment(transaction);
-                if(personalFragment==null){
-                    personalFragment = PersonalFragment.newInstance(R.layout.personal);
-                    transaction.add(R.id.FramePage,personalFragment);
-                }else{
-                    transaction.show(personalFragment);
-                }
-                break;
-            case R.id.navigation_shops:
-                Intent mIntent=new Intent(MainActivity.this,GuideActivity.class);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    startActivityForResult(mIntent, 1,ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
-                }
-                break;
+            switch (item.getItemId()){
+                case R.id.navigation_home:
+                    hideAllFragment(transaction);
+                    if(homeFragment==null){
+                        homeFragment =HomeFragment.newInstance(R.layout.home);//"第二个Fragment"
+                        transaction.add(R.id.FramePage,homeFragment);
+                    }else{
+                        transaction.show(homeFragment);
+                    }
+                    break;
+                case R.id.navigation_personal:
+                    hideAllFragment(transaction);
+                    if(personalFragment==null){
+                        personalFragment = PersonalFragment.newInstance(R.layout.personal);
+                        transaction.add(R.id.FramePage,personalFragment);
+                    }else{
+                        transaction.show(personalFragment);
+                    }
+                    break;
+                case R.id.navigation_community:
+                    hideAllFragment(transaction);
+                    if(communityFragment==null){
+                        communityFragment=CommunityFragment.newInstance(R.layout.communities);
+                        transaction.add(R.id.FramePage,communityFragment);
+                    }else{
+                        transaction.show(communityFragment);
+                    }
+                    break;
+            }
+            transaction.commit();
+
+            return false;
         }
-
-
-        transaction.commit();
-
-        return false;
-    }
-};
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,46 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        String returnData= data.getStringExtra("data_return");
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-        switch (requestCode){
-            case 1:
-                if(resultCode==RESULT_OK){
-                    switch (returnData){
-                        case "个人中心":
-                            hideAllFragment(transaction);
-                            if(personalFragment==null){
-                                personalFragment=PersonalFragment.newInstance(R.layout.personal);
-                                transaction.add(R.id.FramePage,personalFragment);
-                            }else{
-                                transaction.show(personalFragment);
-                            }
-                            break;
-
-                        case "首页":
-
-                            hideAllFragment(transaction);
-                            if(homeFragment==null){
-                                homeFragment=HomeFragment.newInstance(R.layout.home);
-                                transaction.add(R.id.FramePage,homeFragment);
-                            }else{
-                                transaction.show(homeFragment);
-                            }
-
-                            break;
-
-                        default:break;
-                    }
-
-
-                }
-            default:break;
-        }
-        transaction.commit();
-    }
 
 
     public void hideAllFragment(FragmentTransaction transaction){
@@ -140,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if(homeFragment!=null){
             transaction.hide(homeFragment);
+        }
+        if(communityFragment!=null){
+            transaction.hide(communityFragment);
         }
 
     }

@@ -8,20 +8,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
+import android.support.annotation.RequiresApi;
 import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.stackfarm.myapplication.MainActivity;
 import com.example.stackfarm.myapplication.R;
 import com.example.stackfarm.myapplication.adapter.TubatuAdapter;
 import com.example.stackfarm.myapplication.guiding.GuideActivity;
 import com.example.stackfarm.myapplication.utils.ClipViewPager;
+import com.example.stackfarm.myapplication.utils.ScalePageTransformer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private ImageButton shops;
 
-    private int FragmentPage;
+    private int iFragmentPage;
 
     private TubatuAdapter mPagerAdapter;
     private ClipViewPager mViewPager;
@@ -46,18 +46,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     public  static HomeFragment newInstance(int iFragmentPage){
         HomeFragment myFragment = new HomeFragment();
-        myFragment.FragmentPage = iFragmentPage;
+        myFragment.iFragmentPage = iFragmentPage;
         return  myFragment;
     }
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(FragmentPage,container,false);
+        View view= inflater.inflate(iFragmentPage,container,false);
 
-        mViewPager = (ClipViewPager) view.findViewById(R.id.viewpager);
+        mViewPager = (ClipViewPager)view.findViewById(R.id.viewpager4);
         /**调节ViewPager的滑动速度**/
         mViewPager.setSpeedScroller(300);
 
@@ -69,20 +70,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
          * 需要将整个页面的事件分发给ViewPager，不然的话只有ViewPager中间的view能滑动，其他的都不能滑动，
          * 这是肯定的，因为ViewPager总体布局就是中间那一块大小，其他的子布局都跑到ViewPager外面来了
          */
-        view.findViewById(R.id.page_container).setOnTouchListener(new View.OnTouchListener() {
+        view.findViewById(R.id.page_container4).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return mViewPager.dispatchTouchEvent(event);
             }
         });
-
-        mPagerAdapter = new TubatuAdapter(getActivity(),strList);
+        mPagerAdapter = new TubatuAdapter(this.getContext(),strList);
         mViewPager.setAdapter(mPagerAdapter);
         initData();
 
         shops=(ImageButton) view.findViewById(R.id.shops);
         shops.setOnClickListener(this);
 
+        setFonts(view);
+
+        return view;
+    }
+
+    private void setFonts(View view){
         Typeface mTypeface=Typeface.createFromAsset(view.getContext().getAssets(),"fonts/wryh.ttf");
         cainixihuan=(TextView)view.findViewById(R.id.cainixihuan);
         tuijianmendian=(TextView)view.findViewById(R.id.tuijianmendian);
@@ -100,9 +106,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         tp.setFakeBoldText(true);
         tp=cainixihuan.getPaint();
         tp.setFakeBoldText(true);
-
-        return view;
     }
+
     private void initData() {
         List<Integer> list = new ArrayList<>();
         list.add(R.mipmap.one);
@@ -120,6 +125,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 Intent mIntent=new Intent(getActivity(), GuideActivity.class);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     startActivityForResult(mIntent, 1, ActivityOptions.makeSceneTransitionAnimation(getActivity() ).toBundle());
+                }else{
+                    startActivity(mIntent);
                 }
                 break;
 

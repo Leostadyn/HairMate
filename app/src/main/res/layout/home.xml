@@ -20,8 +20,7 @@
         <RelativeLayout
             android:id="@+id/btn_text"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_60"
-            android:orientation="horizontal">
+            android:layout_height="@dimen/dp_60">
 
             <ImageButton
                 android:id="@+id/shops"
@@ -60,54 +59,58 @@
                 android:id="@+id/lianxing"
                 android:layout_width="@dimen/dp_22"
                 android:layout_height="@dimen/dp_22"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginStart="@dimen/dp_33"
                 android:layout_marginLeft="@dimen/dp_33"
                 android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_33"
+                android:layout_marginRight="@dimen/dp_33"
                 android:layout_toEndOf="@+id/sheji"
                 android:layout_toRightOf="@+id/sheji"
                 android:background="@mipmap/lianxing" />
 
             <TextView
                 android:id="@+id/mendiandingwei"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp_37"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
-                android:layout_marginStart="@dimen/dp_20"
-                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_26"
+                android:layout_marginLeft="@dimen/dp_26"
                 android:layout_marginTop="@dimen/dp_45"
                 android:gravity="center"
                 android:text="门店定位"
                 android:textColor="#4c4c4c"
-                android:textSize="15.4sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/shifaxin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_20"
-                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_24"
                 android:layout_marginTop="@dimen/dp_45"
                 android:layout_toEndOf="@+id/mendiandingwei"
                 android:layout_toRightOf="@+id/mendiandingwei"
                 android:gravity="center"
                 android:text="试发型"
                 android:textColor="#4c4c4c"
-                android:textSize="15.4sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/faxingsheji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_18"
-                android:layout_marginLeft="@dimen/dp_18"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_24"
                 android:layout_marginTop="@dimen/dp_45"
                 android:layout_toEndOf="@+id/shifaxin"
                 android:layout_toRightOf="@+id/shifaxin"
                 android:gravity="center"
                 android:text="发型设计"
                 android:textColor="#4c4c4c"
-                android:textSize="15.4sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/celianxing"
@@ -115,8 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="@dimen/dp_18"
-                android:layout_marginLeft="@dimen/dp_18"
+                android:layout_marginStart="@dimen/dp_23"
+                android:layout_marginLeft="@dimen/dp_23"
                 android:layout_marginTop="@dimen/dp_45"
                 android:layout_marginEnd="@dimen/dp_27"
                 android:layout_marginRight="@dimen/dp_27"
@@ -125,7 +128,7 @@
                 android:gravity="center"
                 android:text="测脸型"
                 android:textColor="#4c4c4c"
-                android:textSize="15.4sp" />
+                android:textSize="12sp" />
 
 
         </RelativeLayout>
@@ -143,11 +146,11 @@
             android:textSize="17.6sp"/>
 
         <RelativeLayout
-            android:id="@+id/page_container"
+            android:id="@+id/page_container4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
             android:clipChildren="false"
+            android:background="@android:color/white"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <!--RelativeLayout和自定义的ClipViewPager都各自添加了一个属性android:clipChildren=”false”，
@@ -155,12 +158,12 @@
             也就是默认是限制子view在其范围的-->
 
             <com.example.stackfarm.myapplication.utils.ClipViewPager
-                android:id="@+id/viewpager"
+                android:id="@+id/viewpager4"
                 android:layout_width="@dimen/dp_130"
                 android:layout_height="@dimen/dp_130"
-                android:layout_centerInParent="true"
-                android:clipChildren="false"
-                android:overScrollMode="never" />
+                android:layout_marginTop="16.0dip"
+                android:layout_centerHorizontal="true"
+                android:overScrollMode="never"/>
 
         </RelativeLayout>
         <TextView
