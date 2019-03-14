@@ -233,37 +233,29 @@ public class GuideActivity extends AppCompatActivity {
     private  void makeLoc(){
         LatLng latLng=new LatLng(31.9052300000,118.8998700000);
         LatLng latLng1=new LatLng(31.9152000000,118.8998600000);
-        final Marker marker = aMap.addMarker(new MarkerOptions().position(latLng));
-        final Marker marker1=aMap.addMarker(new MarkerOptions().position(latLng1));
+        final Marker marker1= aMap.addMarker(new MarkerOptions().position(latLng));
+        final Marker marker2=aMap.addMarker(new MarkerOptions().position(latLng1));
         // 定义 Marker 点击事件监听
+        AMap.OnMarkerClickListener markerClickListener=new AMap.OnMarkerClickListener() {
 
-
-// 绑定 Marker 被点击事件
-        aMap.setOnMarkerClickListener(markerClickListener);
-    }
-
-
-    private AMap.OnMarkerClickListener markerClickListener=new AMap.OnMarkerClickListener() {
-
-        // marker 对象被点击时回调的接口
-        // 返回 true 则表示移到地图中心，否则返回false
-        @Override
-        public boolean onMarkerClick(Marker marker) {
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            switch (marker.getId()){
-                case "Marker2":
+            // marker 对象被点击时回调的接口
+            // 返回 true 则表示移到地图中心，否则返回false
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                final String st1=marker1.getId();
+                final String st2=marker2.getId();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                if(marker.getId().equals(st1)) {
                     showShops();
                     hideAllFragment(transaction);
-                    if(firstFragment==null){
-                        Log.e("TAG","222222222");
-                        firstFragment =FirstFragment.newInstance(R.layout.latlng);
-                        transaction.add(R.id.FrameWindow,firstFragment);
-                    }else{
+                    if (firstFragment == null) {
+                        Log.e("TAG", "222222222");
+                        firstFragment = FirstFragment.newInstance(R.layout.latlng);
+                        transaction.add(R.id.FrameWindow, firstFragment);
+                    } else {
                         transaction.show(firstFragment);
                     }
-                    break;
-                case "Marker3":
+                }else if(marker.getId().equals(st2)){
                     showShops();
                     hideAllFragment(transaction);
                     if(secondFragment==null){
@@ -273,15 +265,19 @@ public class GuideActivity extends AppCompatActivity {
                     }else{
                         transaction.show(secondFragment);
                     }
-                    break;
-                default:
-                    break;
+                }
+                transaction.commit();
+                Toast.makeText(GuideActivity.this,marker.getId(),Toast.LENGTH_LONG).show();
+                return false;
             }
-            transaction.commit();
-            Toast.makeText(GuideActivity.this,marker.getId(),Toast.LENGTH_LONG).show();
-            return false;
-        }
-    };
+        };
+
+// 绑定 Marker 被点击事件
+        aMap.setOnMarkerClickListener(markerClickListener);
+    }
+
+
+
 
     public void hideAllFragment(FragmentTransaction transaction){
         if(firstFragment!=null){
