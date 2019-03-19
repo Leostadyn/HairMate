@@ -56,7 +56,7 @@ public class SecondFragment extends Fragment {
                 return mViewPager.dispatchTouchEvent(event);
             }
         });
-        mPagerAdapter = new TubatuAdapter(this.getContext(),strList);
+        mPagerAdapter = new TubatuAdapter(view.getContext(),strList);
         mViewPager.setAdapter(mPagerAdapter);
         initData();
 

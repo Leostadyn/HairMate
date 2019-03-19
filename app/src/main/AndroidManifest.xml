@@ -23,6 +23,7 @@
     <!--用于申请获取蓝牙信息进行室内定位-->
     <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -50,11 +51,24 @@
         <activity android:name=".logining.LoginActivity">
 
         </activity>
+        <activity android:name=".trail.TrailHairstyle">
+
+        </activity>
         <activity
             android:name=".guiding.GuideActivity">
 
         </activity>
         <service android:name="com.amap.api.location.APSService"></service>
+
+        <provider
+            android:authorities="com.example.stackfarm.myapplication.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
 
     </application>
 

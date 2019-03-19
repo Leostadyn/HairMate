@@ -156,14 +156,11 @@ public class GuideActivity extends AppCompatActivity {
     }
 
     private void requestLocation(){
-
-
         if(aMap==null) {
             aMap = mapView.getMap();
             setMapCustomStyleFile(this);
         }
         initLocation();
-
         makeLoc();
     }
 

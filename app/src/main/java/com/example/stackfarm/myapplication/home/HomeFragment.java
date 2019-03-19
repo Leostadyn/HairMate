@@ -5,21 +5,28 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.support.annotation.RequiresApi;
 import android.text.TextPaint;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.stackfarm.myapplication.R;
 import com.example.stackfarm.myapplication.adapter.TubatuAdapter;
 import com.example.stackfarm.myapplication.guiding.GuideActivity;
+import com.example.stackfarm.myapplication.trail.TrailHairstyle;
+import com.example.stackfarm.myapplication.utils.BottomSelectorPopDialog;
 import com.example.stackfarm.myapplication.utils.ClipViewPager;
 import com.example.stackfarm.myapplication.utils.ScalePageTransformer;
 
@@ -31,8 +38,14 @@ import java.util.List;
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private ImageButton shops;
+    private ImageButton shifaxing;
 
-    private int iFragmentPage;
+    private int FragmentPage;
+
+    final static int CAMERA_RESULT_CODE=1;
+    final static int CROP_RESULT_CODE=2;
+    final static int ALBUM_RESULT_CODE=3;
+    final static int REQUEST_PERMISSIONS=4;
 
     private TubatuAdapter mPagerAdapter;
     private ClipViewPager mViewPager;
@@ -46,7 +59,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     public  static HomeFragment newInstance(int iFragmentPage){
         HomeFragment myFragment = new HomeFragment();
-        myFragment.iFragmentPage = iFragmentPage;
+        myFragment.FragmentPage = iFragmentPage;
         return  myFragment;
     }
 
@@ -56,7 +69,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(iFragmentPage,container,false);
+        View view= inflater.inflate(FragmentPage,container,false);
 
         mViewPager = (ClipViewPager)view.findViewById(R.id.viewpager4);
         /**调节ViewPager的滑动速度**/
@@ -76,14 +89,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 return mViewPager.dispatchTouchEvent(event);
             }
         });
-        mPagerAdapter = new TubatuAdapter(this.getContext(),strList);
+        mPagerAdapter = new TubatuAdapter(view.getContext(),strList);
         mViewPager.setAdapter(mPagerAdapter);
         initData();
 
         shops=(ImageButton) view.findViewById(R.id.shops);
         shops.setOnClickListener(this);
 
-        setFonts(view);
+        shifaxing=(ImageButton)view.findViewById(R.id.shifaxing) ;
+        shifaxing.setOnClickListener(this);
+
+//        设置字体
+//        setFonts(view);
 
         return view;
     }
@@ -128,11 +145,61 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 }else{
                     startActivity(mIntent);
                 }
+            case R.id.shifaxing:
+                String[] list = {"拍照","相册"};
+                popupSelectOperation(list);  //弹框显示选项
                 break;
 
             default:
                 break;
         }
+    }
+
+    private void backgroundAlpha(float b) {
+        WindowManager.LayoutParams layoutParams = getActivity().getWindow().getAttributes();
+        layoutParams.alpha = b;
+        getActivity().getWindow().setAttributes(layoutParams);
+    }
+
+    public BottomSelectorPopDialog mBottomSelectorPopDialog;
+    private void popupSelectOperation(String[] list) {
+        backgroundAlpha(0.8f);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mBottomSelectorPopDialog = new BottomSelectorPopDialog(getActivity(), list, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mBottomSelectorPopDialog.dismiss();
+                    switch (v.getId()) {
+                        case R.id.tv_action_one:
+                            Log.d("photo","tv_action_one");
+                            Intent cameraIntent=new Intent(getContext(),TrailHairstyle.class);
+                            cameraIntent.putExtra("TRAIL","camera");
+                            startActivity(cameraIntent);
+                            break;
+                        case R.id.tv_action_two:
+                            Log.d("photo","tv_action_two");
+                            Intent albumIntent = new Intent(getContext(), TrailHairstyle.class);
+                            albumIntent.putExtra("TRAIL","album");
+                            startActivity(albumIntent);
+
+
+                            break;
+                        case R.id.tv_cancel_show:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+        }
+        //显示窗口消失后让背景恢复
+        mBottomSelectorPopDialog.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1f);
+            }
+        });
+        mBottomSelectorPopDialog.showAtLocation(getActivity().findViewById(R.id.container), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
     }
 }
 
