@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/pop_layout">
+    <!--android:background="@color/transparent"-->
+
+    <!-- <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:orientation="vertical"/>-->
+
+    <TextView
+        android:background="@drawable/text_item_bg"
+        android:id="@+id/tv_action_one"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="xx"
+        android:gravity="center"
+        android:textColor="#00ad64"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:background="@drawable/text_item_bg"
+        android:id="@+id/tv_action_two"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="xx"
+        android:gravity="center"
+        android:textColor="#00ad64"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:visibility="gone"
+        android:background="@drawable/text_item_bg"
+        android:id="@+id/tv_action_three"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="xx"
+        android:gravity="center"
+        android:textColor="#00ad64"
+        android:textSize="18dp"/>
+    <!--有需要可以自己再添加多个操作项-->
+
+    <TextView
+        android:background="@drawable/text_item_bg"
+        android:id="@+id/tv_cancel_show"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消"
+        android:gravity="center"
+        android:textColor="#999999"
+        android:textSize="18dp"/>
+
+</LinearLayout>
