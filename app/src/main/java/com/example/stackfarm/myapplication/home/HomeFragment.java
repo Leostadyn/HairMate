@@ -145,6 +145,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 }else{
                     startActivity(mIntent);
                 }
+                break;
             case R.id.shifaxing:
                 String[] list = {"拍照","相册"};
                 popupSelectOperation(list);  //弹框显示选项

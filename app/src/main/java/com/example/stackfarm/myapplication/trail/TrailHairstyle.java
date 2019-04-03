@@ -18,17 +18,24 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.stackfarm.myapplication.R;
+import com.example.stackfarm.myapplication.adapter.PluginViewAdapter;
+import com.example.stackfarm.myapplication.bean.PluginBean;
 import com.example.stackfarm.myapplication.utils.FileUtilcll;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TrailHairstyle extends AppCompatActivity {
 
@@ -43,6 +50,9 @@ public class TrailHairstyle extends AppCompatActivity {
     final static int ALBUM_RESULT_CODE=3;
     final static int REQUEST_PERMISSIONS=4;
 
+    RecyclerView recyclerView;
+    PluginViewAdapter adapter;
+    List<PluginBean> list=new ArrayList<>();
 
     ImageView imageView;
 
@@ -57,6 +67,14 @@ public class TrailHairstyle extends AppCompatActivity {
 
         Intent intent=getIntent();
         judge(intent.getStringExtra("TRAIL"));
+
+        initPlugins();
+        recyclerView=findViewById(R.id.pluginView);
+        adapter=new PluginViewAdapter(list);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     private void judge(String s){
@@ -292,5 +310,15 @@ public class TrailHairstyle extends AppCompatActivity {
         Intent albumIntent = new Intent(Intent.ACTION_PICK);
         albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         startActivityForResult(albumIntent, ALBUM_RESULT_CODE);
+    }
+
+    private void initPlugins(){
+        PluginBean one=new PluginBean("One",R.mipmap.one);
+        PluginBean two=new PluginBean("Two",R.mipmap.two);
+        PluginBean three=new PluginBean("Three",R.mipmap.three);
+
+        list.add(one);
+        list.add(two);
+        list.add(three);
     }
 }

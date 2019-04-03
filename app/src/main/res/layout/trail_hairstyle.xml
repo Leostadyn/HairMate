@@ -1,10 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/image_big"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/image_big"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#aaf23000"
+            android:layout_weight="7"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/pluginView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#3aa000"
+            android:layout_weight="3"
+            android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <!--<com.example.leostadyn.myapplication.MyImageView-->
+        <!--android:id="@+id/imageview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+        <!--&lt;!&ndash;android:src="@mipmap/uvsd"&ndash;&gt;-->
+
+</RelativeLayout>
