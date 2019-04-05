@@ -21,11 +21,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.stackfarm.myapplication.R;
+import com.example.stackfarm.myapplication.adapter.OnItemClickListener;
 import com.example.stackfarm.myapplication.adapter.PluginViewAdapter;
 import com.example.stackfarm.myapplication.bean.PluginBean;
 import com.example.stackfarm.myapplication.utils.FileUtilcll;
@@ -55,6 +57,7 @@ public class TrailHairstyle extends AppCompatActivity {
     List<PluginBean> list=new ArrayList<>();
 
     ImageView imageView;
+    ImageView plugin;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class TrailHairstyle extends AppCompatActivity {
         initPermission();
 
         imageView=(ImageView) findViewById(R.id.image_big);
+        plugin=(ImageView)findViewById(R.id.imageview);
 
         Intent intent=getIntent();
         judge(intent.getStringExtra("TRAIL"));
@@ -71,6 +75,22 @@ public class TrailHairstyle extends AppCompatActivity {
         initPlugins();
         recyclerView=findViewById(R.id.pluginView);
         adapter=new PluginViewAdapter(list);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                switch (position){
+                    case 0:
+                        plugin.setImageResource(R.mipmap.one);
+                        break;
+                    case 1:
+                        plugin.setImageResource(R.mipmap.two);
+                        break;
+                    case 2:
+                        plugin.setImageResource(R.mipmap.three);
+                        break;
+                }
+            }
+        });
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);

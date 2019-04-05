@@ -5,12 +5,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <ImageView
-            android:id="@+id/image_big"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#aaf23000"
-            android:layout_weight="7"/>
+            android:layout_weight="7">
+            <ImageView
+                android:id="@+id/image_big"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#aaf23000"/>
+            <com.example.stackfarm.myapplication.utils.MyImageView
+                android:id="@+id/imageview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/pluginView"
             android:layout_width="match_parent"
@@ -22,10 +30,6 @@
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
-    <!--<com.example.leostadyn.myapplication.MyImageView-->
-        <!--android:id="@+id/imageview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-        <!--&lt;!&ndash;android:src="@mipmap/uvsd"&ndash;&gt;-->
+
 
 </RelativeLayout>

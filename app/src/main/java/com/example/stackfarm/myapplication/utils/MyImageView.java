@@ -9,6 +9,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -32,7 +33,7 @@ public class MyImageView extends android.support.v7.widget.AppCompatImageView {
     /**
      * 最大缩放比例
      */
-    static final float MAX_SCALE = 5f;
+    static final float MAX_SCALE = 10f;
 
     /**
      * 初始状态
@@ -88,9 +89,9 @@ public class MyImageView extends android.support.v7.widget.AppCompatImageView {
         this.setImageBitmap(bitmap);
 
         //bitmap为空就不调用center函数
-        if (bitmap != null) {
-            center(true, true);
-        }
+//        if (bitmap != null) {
+//            center(true, true);
+//        }
         this.setImageMatrix(matrix);
         this.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -109,6 +110,7 @@ public class MyImageView extends android.support.v7.widget.AppCompatImageView {
                         if (spacing(event) > 10f) {
                             savedMatrix.set(matrix);
                             midPoint(mid, event);
+                            Log.e("TAG","mode=ZOOM");
                             mode = ZOOM;
                         }
                         break;
@@ -128,6 +130,7 @@ public class MyImageView extends android.support.v7.widget.AppCompatImageView {
                             if (newDist > 10f) {
                                 matrix.set(savedMatrix);
                                 float tScale = newDist / dist;
+                                Log.e("TAG","MoveAction");
                                 matrix.postScale(tScale, tScale, mid.x, mid.y);
                             }
                         }
@@ -141,44 +144,44 @@ public class MyImageView extends android.support.v7.widget.AppCompatImageView {
     }
 
 
-    /**
-     * 横向、纵向居中
-     */
-    protected void center(boolean horizontal, boolean vertical) {
-        Matrix m = new Matrix();
-        m.set(matrix);
-        RectF rect = new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        m.mapRect(rect);
-
-        float height = rect.height();
-        float width = rect.width();
-
-        float deltaX = 0, deltaY = 0;
-
-        if (vertical) {
-            // 图片小于屏幕大小，则居中显示。大于屏幕，上方留空则往上移，下方留空则往下移
-            int screenHeight = dm.heightPixels;
-            if (height < screenHeight) {
-                deltaY = (screenHeight - height) / 2 - rect.top;
-            } else if (rect.top > 0) {
-                deltaY = -rect.top;
-            } else if (rect.bottom < screenHeight) {
-                deltaY = this.getHeight() - rect.bottom;
-            }
-        }
-
-        if (horizontal) {
-            int screenWidth = dm.widthPixels;
-            if (width < screenWidth) {
-                deltaX = (screenWidth - width) / 2 - rect.left;
-            } else if (rect.left > 0) {
-                deltaX = -rect.left;
-            } else if (rect.right < screenWidth) {
-                deltaX = screenWidth - rect.right;
-            }
-        }
-        matrix.postTranslate(deltaX, deltaY);
-    }
+//    /**
+//     * 横向、纵向居中
+//     */
+//    protected void center(boolean horizontal, boolean vertical) {
+//        Matrix m = new Matrix();
+//        m.set(matrix);
+//        RectF rect = new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight());
+//        m.mapRect(rect);
+//
+//        float height = rect.height();
+//        float width = rect.width();
+//
+//        float deltaX = 0, deltaY = 0;
+//
+//        if (vertical) {
+//            // 图片小于屏幕大小，则居中显示。大于屏幕，上方留空则往上移，下方留空则往下移
+//            int screenHeight = dm.heightPixels;
+//            if (height < screenHeight) {
+//                deltaY = (screenHeight - height) / 2 - rect.top;
+//            } else if (rect.top > 0) {
+//                deltaY = -rect.top;
+//            } else if (rect.bottom < screenHeight) {
+//                deltaY = this.getHeight() - rect.bottom;
+//            }
+//        }
+//
+//        if (horizontal) {
+//            int screenWidth = dm.widthPixels;
+//            if (width < screenWidth) {
+//                deltaX = (screenWidth - width) / 2 - rect.left;
+//            } else if (rect.left > 0) {
+//                deltaX = -rect.left;
+//            } else if (rect.right < screenWidth) {
+//                deltaX = screenWidth - rect.right;
+//            }
+//        }
+//        matrix.postTranslate(deltaX, deltaY);
+//    }
 
 
     /**
@@ -196,7 +199,7 @@ public class MyImageView extends android.support.v7.widget.AppCompatImageView {
                 //Log.d("", "当前缩放级别:"+p[0]+",最大缩放级别:"+MAX_SCALE);
                 matrix.set(savedMatrix);
             }
-            center(true, true);
+//            center(true, true);
         }
 
     }
