@@ -21,24 +21,11 @@ public class PersonalFragment extends Fragment {
         return  myFragment;
     }
 
-    private TextView nickTag;
-    private Button ord;
-    private Button his;
-    private Button fav;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(FragmentPage,container,false);
-        int num=0;
-        nickTag =view.findViewById(R.id.nickname_tag);
-        ord=view.findViewById(R.id.order);
-        his=view.findViewById(R.id.his);
-        fav=view.findViewById(R.id.fav);
 
-        nickTag.setText("昵称："+"\n"+"\n"+"个性签名：");
-        ord.setText(num+"\n"+"订单");
-        his.setText(num+"\n"+"历史");
-        fav.setText(num+"\n"+"收藏");
 
         return view;
     }

@@ -10,12 +10,19 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/titleImage"
+        <!--<ImageView-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:id="@+id/titleImage"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/dp_130"-->
+            <!--android:src="@mipmap/title_image" />-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/big_image_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_130"
-            android:src="@mipmap/title_image" />
+            android:orientation="horizontal">
+
+        </android.support.v7.widget.RecyclerView>
 
         <RelativeLayout
             android:id="@+id/btn_text"
@@ -174,32 +181,39 @@
             android:textColor="#000"
             android:gravity="center"
             android:textSize="17.6sp"/>
-        <RelativeLayout
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="150dp">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/like1"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:layout_width="@dimen/dp_86"-->
+                <!--android:layout_height="@dimen/dp_47"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_marginStart="@dimen/dp_24"-->
+                <!--android:layout_marginLeft="@dimen/dp_24"-->
+                <!--android:src="@mipmap/like_left" />-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/like2"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:layout_width="@dimen/dp_86"-->
+                <!--android:layout_height="@dimen/dp_47"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginEnd="@dimen/dp_24"-->
+                <!--android:layout_marginRight="@dimen/dp_24"-->
+                <!--android:src="@mipmap/like_right" />-->
+        <!--</RelativeLayout>-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/barber_view"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="@dimen/dp_600">
 
-            <ImageView
-                android:id="@+id/like1"
-                android:scaleType="fitXY"
-                android:layout_width="@dimen/dp_86"
-                android:layout_height="@dimen/dp_47"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="@dimen/dp_24"
-                android:layout_marginLeft="@dimen/dp_24"
-                android:src="@mipmap/like_left" />
-
-            <ImageView
-                android:id="@+id/like2"
-                android:scaleType="fitXY"
-                android:layout_width="@dimen/dp_86"
-                android:layout_height="@dimen/dp_47"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="@dimen/dp_24"
-                android:layout_marginRight="@dimen/dp_24"
-                android:src="@mipmap/like_right" />
-        </RelativeLayout>
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </ScrollView>

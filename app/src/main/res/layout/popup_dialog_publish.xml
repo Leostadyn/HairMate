@@ -22,7 +22,6 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="xx"
         android:gravity="center"
         android:textColor="#00ad64"
         android:textSize="18dp"/>
@@ -37,7 +36,6 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="xx"
         android:gravity="center"
         android:textColor="#00ad64"
         android:textSize="18dp"/>

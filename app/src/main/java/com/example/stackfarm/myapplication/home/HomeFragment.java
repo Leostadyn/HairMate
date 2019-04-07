@@ -2,14 +2,14 @@ package com.example.stackfarm.myapplication.home;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,7 +23,11 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.stackfarm.myapplication.R;
+import com.example.stackfarm.myapplication.adapter.BarberAdapter;
+import com.example.stackfarm.myapplication.adapter.BigImageAdapter;
 import com.example.stackfarm.myapplication.adapter.TubatuAdapter;
+import com.example.stackfarm.myapplication.bean.BarberBean;
+import com.example.stackfarm.myapplication.bean.BigImageBean;
 import com.example.stackfarm.myapplication.guiding.GuideActivity;
 import com.example.stackfarm.myapplication.trail.TrailHairstyle;
 import com.example.stackfarm.myapplication.utils.BottomSelectorPopDialog;
@@ -50,12 +54,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private TubatuAdapter mPagerAdapter;
     private ClipViewPager mViewPager;
 
+    RecyclerView recyclerView;
+    BigImageAdapter adapter;
+    List<BigImageBean> list=new ArrayList<>();
+
+    RecyclerView recyclerView2;
+    BarberAdapter adapter2;
+    List<BarberBean> list2=new ArrayList<>();
+
     private TextView cainixihuan;
     private TextView tuijianmendian;
-    private TextView mendiandingwei;
-    private TextView celianxing;
-    private TextView shifaxin;
-    private TextView faxingsheji;
 
     public  static HomeFragment newInstance(int iFragmentPage){
         HomeFragment myFragment = new HomeFragment();
@@ -70,6 +78,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(FragmentPage,container,false);
+
+        initBigImages(view);
+        initBarbers(view);
 
         mViewPager = (ClipViewPager)view.findViewById(R.id.viewpager4);
         /**调节ViewPager的滑动速度**/
@@ -100,25 +111,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         shifaxing.setOnClickListener(this);
 
 //        设置字体
-//        setFonts(view);
+        setFonts(view);
 
         return view;
     }
 
     private void setFonts(View view){
-        Typeface mTypeface=Typeface.createFromAsset(view.getContext().getAssets(),"fonts/wryh.ttf");
+//        Typeface mTypeface=Typeface.createFromAsset(view.getContext().getAssets(),"fonts/wryh.ttf");
         cainixihuan=(TextView)view.findViewById(R.id.cainixihuan);
         tuijianmendian=(TextView)view.findViewById(R.id.tuijianmendian);
-        mendiandingwei=(TextView)view.findViewById(R.id.mendiandingwei);
-        celianxing=(TextView)view.findViewById(R.id.celianxing);
-        faxingsheji=(TextView)view.findViewById(R.id.faxingsheji);
-        shifaxin=(TextView)view.findViewById(R.id.shifaxin);
-        celianxing.setTypeface(mTypeface);
-        cainixihuan.setTypeface(mTypeface);
-        tuijianmendian.setTypeface(mTypeface);
-        mendiandingwei.setTypeface(mTypeface);
-        shifaxin.setTypeface(mTypeface);
-        faxingsheji.setTypeface(mTypeface);
+//        celianxing.setTypeface(mTypeface);
+//        cainixihuan.setTypeface(mTypeface);
+//        tuijianmendian.setTypeface(mTypeface);
+//        mendiandingwei.setTypeface(mTypeface);
+//        shifaxin.setTypeface(mTypeface);
+//        faxingsheji.setTypeface(mTypeface);
         TextPaint tp = tuijianmendian.getPaint();
         tp.setFakeBoldText(true);
         tp=cainixihuan.getPaint();
@@ -130,6 +137,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         list.add(R.mipmap.one);
         list.add(R.mipmap.two);
         list.add(R.mipmap.three);
+        list.add(R.mipmap.four);
         /**这里需要将setOffscreenPageLimit的值设置成数据源的总个数，如果不加这句话，会导致左右切换异常；**/
         mViewPager.setOffscreenPageLimit(list.size());
         mPagerAdapter.addAll(list);
@@ -160,6 +168,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         WindowManager.LayoutParams layoutParams = getActivity().getWindow().getAttributes();
         layoutParams.alpha = b;
         getActivity().getWindow().setAttributes(layoutParams);
+    }
+
+    private void initBigImages(View view){
+        BigImageBean one=new BigImageBean(R.mipmap.oneb);
+        BigImageBean two=new BigImageBean(R.mipmap.twob);
+        BigImageBean three=new BigImageBean(R.mipmap.threeb);
+
+        list.add(one);
+        list.add(two);
+        list.add(three);
+        recyclerView=view.findViewById(R.id.big_image_view);
+        adapter=new BigImageAdapter(list);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(view.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+    private void initBarbers(View view){
+        BarberBean one=new BarberBean("Tony",R.mipmap.barber1,"38.0","18.0","58.0");
+        BarberBean two=new BarberBean("首席设计师",R.mipmap.barber2,"38.0","18.0","58.0");
+
+        list2.add(one);
+        list2.add(two);
+
+        recyclerView2=view.findViewById(R.id.barber_view);
+        adapter2=new BarberAdapter(list2);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(view.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView2.setLayoutManager(layoutManager);
+        recyclerView2.setAdapter(adapter2);
     }
 
     public BottomSelectorPopDialog mBottomSelectorPopDialog;
