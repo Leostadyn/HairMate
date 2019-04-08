@@ -28,6 +28,7 @@ import com.example.stackfarm.myapplication.adapter.BigImageAdapter;
 import com.example.stackfarm.myapplication.adapter.TubatuAdapter;
 import com.example.stackfarm.myapplication.bean.BarberBean;
 import com.example.stackfarm.myapplication.bean.BigImageBean;
+import com.example.stackfarm.myapplication.design.HairDesignActivity;
 import com.example.stackfarm.myapplication.guiding.GuideActivity;
 import com.example.stackfarm.myapplication.trail.TrailHairstyle;
 import com.example.stackfarm.myapplication.utils.BottomSelectorPopDialog;
@@ -43,6 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private ImageButton shops;
     private ImageButton shifaxing;
+    private ImageButton faxingsheji;
 
     private int FragmentPage;
 
@@ -88,7 +90,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         /**给ViewPager设置缩放动画，这里通过PageTransformer来实现**/
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
-        List<String> strList = Arrays.asList("one", "two", "three");
+        List<String> strList = Arrays.asList("one", "two", "three","four");
 
         /**
          * 需要将整个页面的事件分发给ViewPager，不然的话只有ViewPager中间的view能滑动，其他的都不能滑动，
@@ -110,6 +112,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         shifaxing=(ImageButton)view.findViewById(R.id.shifaxing) ;
         shifaxing.setOnClickListener(this);
 
+        faxingsheji=(ImageButton)view.findViewById(R.id.sheji);
+        faxingsheji.setOnClickListener(this);
+
+
 //        设置字体
         setFonts(view);
 
@@ -117,15 +123,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     }
 
     private void setFonts(View view){
-//        Typeface mTypeface=Typeface.createFromAsset(view.getContext().getAssets(),"fonts/wryh.ttf");
         cainixihuan=(TextView)view.findViewById(R.id.cainixihuan);
         tuijianmendian=(TextView)view.findViewById(R.id.tuijianmendian);
-//        celianxing.setTypeface(mTypeface);
-//        cainixihuan.setTypeface(mTypeface);
-//        tuijianmendian.setTypeface(mTypeface);
-//        mendiandingwei.setTypeface(mTypeface);
-//        shifaxin.setTypeface(mTypeface);
-//        faxingsheji.setTypeface(mTypeface);
         TextPaint tp = tuijianmendian.getPaint();
         tp.setFakeBoldText(true);
         tp=cainixihuan.getPaint();
@@ -157,6 +156,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.shifaxing:
                 String[] list = {"拍照","相册"};
                 popupSelectOperation(list);  //弹框显示选项
+                break;
+
+            case R.id.sheji:
+                Intent intent=new Intent(getActivity(), HairDesignActivity.class);
+                startActivity(intent);
                 break;
 
             default:

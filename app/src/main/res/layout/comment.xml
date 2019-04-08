@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#cecece"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/finish"
+        android:text="关闭"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:background="@color/transparent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:background="@drawable/shape_corner3"
+        android:id="@+id/comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_150"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_60"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:hint="请将你们的想法告诉我们哦~~" />
+    <EditText
+        android:background="@drawable/shape_corner3"
+        android:id="@+id/wechat_num"
+        android:layout_margin="@dimen/dp_10"
+        android:layout_below="@id/comment_content"
+        android:layout_width="match_parent"
+        android:maxLines="1"
+        android:gravity="center_vertical"
+        android:layout_height="@dimen/dp_30"
+        android:hint="壮士留下你的微信号吧"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:textColor="#000"
+        android:id="@+id/tips"
+        android:layout_below="@id/wechat_num"
+        android:background="@color/transparent"
+        android:text="tips:如果我们采用了您的想法，一定为厚厚的奖励壮士"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tips"
+        android:background="@drawable/btn_shape"/>
+
+
+</RelativeLayout>

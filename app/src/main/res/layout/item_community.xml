@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@drawable/shape_corner3"
+    android:layout_margin="@dimen/dp_5"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_200">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentStart="true"
+        android:id="@+id/item_community_img"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_20" />
+
+    <TextView
+        android:id="@+id/item_community_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_toEndOf="@+id/item_community_img"
+        android:layout_toRightOf="@+id/item_community_img"
+        android:text="000"
+        android:textColor="#000"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/item_community_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_community_name"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_2"
+        android:layout_toEndOf="@+id/item_community_img"
+        android:layout_toRightOf="@+id/item_community_img"
+        android:text="00000000" />
+
+    <TextView
+        android:id="@+id/item_community_loc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_community_time"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_2"
+        android:layout_toEndOf="@+id/item_community_img"
+        android:layout_toRightOf="@+id/item_community_img"
+        android:text="000000000" />
+
+    <TextView
+        android:id="@+id/item_community_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dp_5"
+        android:gravity="center_vertical"
+        android:text="--------"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:background="@drawable/shape_corner2"/>
+</RelativeLayout>

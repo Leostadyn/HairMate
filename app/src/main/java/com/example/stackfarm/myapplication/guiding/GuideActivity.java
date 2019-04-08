@@ -264,7 +264,6 @@ public class GuideActivity extends AppCompatActivity {
                     }
                 }
                 transaction.commit();
-                Toast.makeText(GuideActivity.this,marker.getId(),Toast.LENGTH_LONG).show();
                 return false;
             }
         };

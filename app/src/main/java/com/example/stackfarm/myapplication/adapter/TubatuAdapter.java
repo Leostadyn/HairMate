@@ -1,6 +1,7 @@
 package com.example.stackfarm.myapplication.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -40,7 +41,7 @@ public class TubatuAdapter extends RecyclingPagerAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, strList.get(position), Toast.LENGTH_SHORT).show();
+                Log.e("TAG",""+strList.get(position));
             }
         });
         return imageView;

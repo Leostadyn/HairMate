@@ -66,9 +66,7 @@ public class SecondFragment extends Fragment {
 
     private void initData() {
         List<Integer> list = new ArrayList<>();
-        list.add(R.mipmap.one);
-        list.add(R.mipmap.two);
-        list.add(R.mipmap.three);
+        list.add(R.mipmap.barber2);
         /**这里需要将setOffscreenPageLimit的值设置成数据源的总个数，如果不加这句话，会导致左右切换异常；**/
         mViewPager.setOffscreenPageLimit(list.size());
         mPagerAdapter.addAll(list);

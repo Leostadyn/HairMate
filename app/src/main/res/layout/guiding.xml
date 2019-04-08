@@ -43,7 +43,6 @@
                                 android:layout_width="200.0dip"
                                 android:layout_height="200.0dip"
                                 android:layout_marginTop="16.0dip"
-                                android:layout_below="@id/text2"
                                 android:layout_centerHorizontal="true"
                                 android:overScrollMode="never"/>
                             <FrameLayout

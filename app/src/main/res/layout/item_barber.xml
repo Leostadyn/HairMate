@@ -4,7 +4,7 @@
     android:paddingTop="@dimen/dp_2"
     android:layout_margin="@dimen/dp_5"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_180">
+    android:layout_height="@dimen/dp_178">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/item_barber_img"
@@ -77,7 +77,7 @@
         android:layout_marginHorizontal="@dimen/dp_6"
         android:layout_height="@dimen/dp_20"
         android:layout_below="@+id/item_barber_tag"
-        android:background="#fff"
+        android:background="@drawable/shape_corner3"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
@@ -112,7 +112,7 @@
         android:layout_marginHorizontal="@dimen/dp_6"
         android:layout_below="@+id/item_barber_trial"
         android:layout_marginTop="@dimen/dp_2"
-        android:background="#fff"
+        android:background="@drawable/shape_corner3"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
@@ -147,7 +147,7 @@
         android:layout_height="@dimen/dp_20"
         android:layout_below="@+id/item_barber_analysis"
         android:layout_marginTop="@dimen/dp_2"
-        android:background="#fff"
+        android:background="@drawable/shape_corner3"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 

@@ -80,13 +80,24 @@ public class TrailHairstyle extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 switch (position){
                     case 0:
-                        plugin.setImageResource(R.mipmap.one);
+                        plugin.setImageResource(R.mipmap.hair1);
                         break;
                     case 1:
-                        plugin.setImageResource(R.mipmap.two);
+                        plugin.setImageResource(R.mipmap.hair2);
                         break;
                     case 2:
-                        plugin.setImageResource(R.mipmap.three);
+                        plugin.setImageResource(R.mipmap.hair3);
+                        break;
+                    case 3:
+                        plugin.setImageResource(R.mipmap.hair4);
+                        break;
+                    case 4:
+                        plugin.setImageResource(R.mipmap.hair5);
+                        break;
+                    case 5:
+                        plugin.setImageResource(R.mipmap.hair6);
+                        break;
+                    default:
                         break;
                 }
             }
@@ -333,12 +344,18 @@ public class TrailHairstyle extends AppCompatActivity {
     }
 
     private void initPlugins(){
-        PluginBean one=new PluginBean("One",R.mipmap.one);
-        PluginBean two=new PluginBean("Two",R.mipmap.two);
-        PluginBean three=new PluginBean("Three",R.mipmap.three);
+        PluginBean one=new PluginBean("发型1",R.mipmap.hair1);
+        PluginBean two=new PluginBean("发型2",R.mipmap.hair2);
+        PluginBean three=new PluginBean("发型3",R.mipmap.hair3);
+        PluginBean four=new PluginBean("发型4",R.mipmap.hair4);
+        PluginBean five=new PluginBean("发型5",R.mipmap.hair5);
+        PluginBean six=new PluginBean("发型6",R.mipmap.hair6);
 
         list.add(one);
         list.add(two);
         list.add(three);
+        list.add(four);
+        list.add(five);
+        list.add(six);
     }
 }
