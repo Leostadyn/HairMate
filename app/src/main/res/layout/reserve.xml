@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/head"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="@dimen/dp_70"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dp_25"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_100"
+        android:background="@color/transparent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dp_32"
+        android:layout_marginLeft="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_100"
+        android:layout_toEndOf="@+id/head"
+        android:layout_toRightOf="@+id/head"
+        android:text="0000000"
+        android:textColor="#000"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginStart="@dimen/dp_32"
+        android:layout_marginLeft="@dimen/dp_32"
+        android:layout_toEndOf="@+id/head"
+        android:layout_toRightOf="@+id/head"
+        android:text="当前人数： 10"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:paddingLeft="@dimen/dp_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head"
+        android:layout_marginTop="175dp"
+        android:text="预约时间： 2019年月1日"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head"
+        android:id="@+id/reserve"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_150"
+        android:background="@color/colorPrimary"
+        android:minHeight="@dimen/dp_0"
+        android:text="预约"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:textSize="25sp" />
+
+</RelativeLayout>

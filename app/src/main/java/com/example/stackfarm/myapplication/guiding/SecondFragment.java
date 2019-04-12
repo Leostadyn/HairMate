@@ -1,6 +1,7 @@
 package com.example.stackfarm.myapplication.guiding;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.stackfarm.myapplication.R;
 import com.example.stackfarm.myapplication.adapter.TubatuAdapter;
@@ -20,12 +22,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SecondFragment extends Fragment {
+public class SecondFragment extends Fragment implements View.OnClickListener {
 
     private int FragmentPage;
 
     private TubatuAdapter mPagerAdapter;
     private ClipViewPager mViewPager;
+
+    private Button reserve2;
 
     public  static SecondFragment newInstance(int iFragmentPage){
         SecondFragment myFragment = new SecondFragment();
@@ -60,7 +64,8 @@ public class SecondFragment extends Fragment {
         mViewPager.setAdapter(mPagerAdapter);
         initData();
 
-
+        reserve2=(Button)view.findViewById(R.id.reserve2);
+        reserve2.setOnClickListener(this);
         return view;
     }
 
@@ -71,5 +76,16 @@ public class SecondFragment extends Fragment {
         mViewPager.setOffscreenPageLimit(list.size());
         mPagerAdapter.addAll(list);
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.reserve2:
+                Intent intent =new Intent(getContext(),ReserveActivity.class);
+                intent.putExtra("name","2");
+                startActivity(intent);
+            default:
+                break;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.stackfarm.myapplication.guiding;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.stackfarm.myapplication.R;
@@ -21,11 +23,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment implements View.OnClickListener {
     private int FragmentPage;
 
     private TubatuAdapter mPagerAdapter;
     private ClipViewPager mViewPager;
+
+    private Button reserve1;
 
     public  static FirstFragment newInstance(int iFragmentPage){
         FirstFragment myFragment = new FirstFragment();
@@ -38,6 +42,7 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(FragmentPage,container,false);
+
         mViewPager = (ClipViewPager)view.findViewById(R.id.viewpager1);
         /**调节ViewPager的滑动速度**/
         mViewPager.setSpeedScroller(300);
@@ -59,6 +64,8 @@ public class FirstFragment extends Fragment {
         mPagerAdapter = new TubatuAdapter(view.getContext(),strList);
         mViewPager.setAdapter(mPagerAdapter);
         initData();
+        reserve1=(Button)view.findViewById(R.id.reserve1);
+        reserve1.setOnClickListener(this);
 
         return view;
     }
@@ -72,4 +79,16 @@ public class FirstFragment extends Fragment {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.reserve1:
+                Intent intent =new Intent(getContext(),ReserveActivity.class);
+                intent.putExtra("name","1");
+                startActivity(intent);
+            default:
+                break;
+        }
+    }
 }

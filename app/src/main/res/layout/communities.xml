@@ -5,12 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/community_view"
         android:layout_width="match_parent"
         android:layout_height="2000dp">
 
     </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/transparent"
+        android:layout_height="@dimen/dp_50" />
+</LinearLayout>
+
 
 </ScrollView>

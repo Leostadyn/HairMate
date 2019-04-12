@@ -70,6 +70,8 @@
         <activity android:name=".design.HairDesignActivity">
 
         </activity>
+        <activity android:name=".guiding.ReserveActivity" />
+
         <service android:name="com.amap.api.location.APSService"></service>
 
         <provider
