@@ -1,5 +1,6 @@
 package com.example.stackfarm.myapplication.logining;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -53,7 +54,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.register_btn:
-
+                Intent intent=new Intent(this,RegisterActivity.class);
+                startActivity(intent);
 
                 break;
 

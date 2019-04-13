@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#cecece"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/transparent"-->
+    <!--android:text="关闭"-->
+    <!--android:id="@+id/closeFaceBtn"-->
+    <!--android:textSize="20sp"/>-->
+
+    <!--<ImageView-->
+        <!--android:id="@+id/image_result"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/dp_300"-->
+        <!--android:src="@mipmap/result"-->
+        <!--android:layout_below="@+id/closeFaceBtn" />-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="503dp"
+        android:background="#fff"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:text="没有图片"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/image_result"-->
+        <!--android:layout_marginTop="91dp"-->
+        <!--android:text="你的脸型： 国字脸（仅供参考）"-->
+        <!--android:textColor="#000"-->
+        <!--android:textSize="20sp" />-->
+</RelativeLayout>

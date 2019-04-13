@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#cecece"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="31dp"
+        android:text="返回"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/dp_100"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_marginVertical="@dimen/dp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:hint="学号"
+            android:textSize="25sp" />
+        <EditText
+            android:layout_marginVertical="@dimen/dp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:hint="密码"
+            android:textSize="25sp" />
+        <EditText
+            android:layout_marginVertical="@dimen/dp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:hint="确认密码"
+            android:textSize="25sp" />
+        <EditText
+            android:layout_marginVertical="@dimen/dp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:hint="姓名"
+            android:textSize="25sp" />
+        <EditText
+            android:layout_marginVertical="@dimen/dp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:hint="&lt;请选择学校&gt;"
+            android:textSize="25sp" />
+        <EditText
+            android:layout_marginVertical="@dimen/dp_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:hint="&lt;请选择班级&gt;"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="528dp"
+        android:background="@color/colorPrimary"
+        android:minWidth="@dimen/dp_50"
+        android:layout_centerHorizontal="true"
+        android:text="注册"
+        android:textColor="#fff"
+        android:textSize="30sp" />
+
+</RelativeLayout>

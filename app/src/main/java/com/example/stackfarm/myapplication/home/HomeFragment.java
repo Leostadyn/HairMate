@@ -29,6 +29,7 @@ import com.example.stackfarm.myapplication.adapter.TubatuAdapter;
 import com.example.stackfarm.myapplication.bean.BarberBean;
 import com.example.stackfarm.myapplication.bean.BigImageBean;
 import com.example.stackfarm.myapplication.design.HairDesignActivity;
+import com.example.stackfarm.myapplication.faceshape.FaceActivity;
 import com.example.stackfarm.myapplication.guiding.GuideActivity;
 import com.example.stackfarm.myapplication.trail.TrailHairstyle;
 import com.example.stackfarm.myapplication.utils.BottomSelectorPopDialog;
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private ImageButton shops;
     private ImageButton shifaxing;
     private ImageButton faxingsheji;
+    private ImageButton celianxing;
 
     private int FragmentPage;
 
@@ -115,6 +117,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         faxingsheji=(ImageButton)view.findViewById(R.id.sheji);
         faxingsheji.setOnClickListener(this);
 
+        celianxing=(ImageButton)view.findViewById(R.id.lianxing);
+        celianxing.setOnClickListener(this);
+
 
 //        设置字体
         setFonts(view);
@@ -161,6 +166,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.sheji:
                 Intent intent=new Intent(getActivity(), HairDesignActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.lianxing:
+                Intent intent1=new Intent(getActivity(), FaceActivity.class);
+                startActivity(intent1);
                 break;
 
             default:

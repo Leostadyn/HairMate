@@ -71,6 +71,8 @@
 
         </activity>
         <activity android:name=".guiding.ReserveActivity" />
+        <activity android:name=".faceshape.FaceActivity" />
+        <activity android:name=".logining.RegisterActivity" />
 
         <service android:name="com.amap.api.location.APSService"></service>
 
